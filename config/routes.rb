@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get "bookings/index"
+  get "bookings/new"
+  get "bookings/create"
+  get "bookings/destroy"
+  get "experiences/show"
+  get "experiences/new"
+  get "experiences/create"
+  get "experiences/edit"
+  get "experiences/update"
+  get "users/new"
+  get "users/create"
+  get "users/edit"
+  get "users/update"
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

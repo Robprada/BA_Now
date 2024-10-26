@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "bookings/new"
   get "bookings/create"
   get "bookings/destroy"
-  get "experiences/show"
+  get "experiences/:id", to: "experiences#show"
   get "experiences/new"
   get "experiences/create"
   get "experiences/edit"

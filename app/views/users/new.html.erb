@@ -1,11 +1,10 @@
 <h1>Sign Up</h1>
 
 <%= simple_form_for @user do |f| %>
-  <%= f.input :username %>
+  <%= f.input :user_name %>
   <%= f.input :email %>
   <%= f.input :password, as: :password %>
-  <%= f.input :password_confirmation, as: :password %>
   <%= f.submit 'Sign Up', class: 'btn btn-primary' %>
 <% end %>
 
-<%= link_to 'Back to Home', root_path %>
+<%= link_to 'Back', root_path, class: 'btn btn-secondary' %>

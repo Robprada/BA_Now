@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_26_223357) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_30_001828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "booking_date"
-    t.string "first_name"
-    t.string "last_name"
     t.bigint "user_id", null: false
     t.bigint "experience_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hour"
+    t.integer "tickets"
     t.index ["experience_id"], name: "index_bookings_on_experience_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -33,6 +33,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_223357) do
     t.integer "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comments"
+    t.bigint "user_id", null: false
+    t.bigint "experience_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["experience_id"], name: "index_reviews_on_experience_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,8 +53,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_223357) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "municipality"
   end
 
   add_foreign_key "bookings", "experiences"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "experiences"
+  add_foreign_key "reviews", "users"
 end

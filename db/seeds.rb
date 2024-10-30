@@ -15,9 +15,9 @@ User.destroy_all
 # Creando usuarios
 puts "Creando usuarios..."
 users = [
-  { user_name: "valentin", email: "valentin@ejemplo.com", password: "123456", municipality: "Palermo" },
-  { user_name: "roberto", email: "roberto@ejemplo.com", password: "123456", municipality: "Recoleta" },
-  { user_name: "omar", email: "omar@ejemplo.com", password: "123456", municipality: "Tigre" }
+  { username: "valentin", email: "valentin@ejemplo.com", password: "123456", municipality: "Palermo" },
+  { username: "roberto", email: "roberto@ejemplo.com", password: "123456", municipality: "Recoleta" },
+  { username: "omar", email: "omar@ejemplo.com", password: "123456", municipality: "Tigre" }
 ]
 
 created_users = users.map do |user_data|

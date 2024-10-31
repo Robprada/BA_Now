@@ -216,3 +216,30 @@
       }
   }
 }
+
+
+.ticket-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-decrease, .btn-increase, .btn-reserve {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-decrease, .btn-increase {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn-reserve {
+  margin-top: 15px;
+  background-color: #2563eb;
+  color: #fff;
+}

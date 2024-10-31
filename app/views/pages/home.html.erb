@@ -8,36 +8,41 @@
 <section class="tours-section">
     <h2 class="section-title">Experiencias destacadas</h2>
     <div class="tours-grid">
-     <!-- Tarjeta 1 -->
-        <div class="tour-card">
-            <div class="image-container">
-                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
-                <button class="favorite-button">
-                    <i class="far fa-heart"></i>
-                </button>
-            </div>
-            <div class="tour-content">
-                <div class="location-rating">
-                    <span class="location">Ubicación</span>
-                    <div class="rating-container">
-                        <span class="rating-star">★</span>
-                        <span class="rating-number">4.92</span>
-                    </div>
-                </div>
-                <h3 class="tour-title">Título 1</h3>
-                <div class="tour-details">
-                    <span>Detalles de la experiencia</span>
-                </div>
-                <div class="price-container">
-                    <span class="price">Precio</span>
-                    <span class="price-period">por persona</span>
-                </div>
-                <div class="tour-tags">
-                    <span class="tag">Etiqueta</span>
-                    <span class="tag">Etiqueta</span>
-                </div>
+<!-- Tarjeta 1 -->
+<div class="tour-card">
+    <div class="image-container">
+        <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+        <button class="favorite-button">
+            <i class="far fa-heart"></i>
+        </button>
+    </div>
+    <div class="tour-content">
+        <div class="location-rating">
+            <span class="location">Ubicación</span>
+            <div class="rating-container">
+                <span class="rating-star">★</span>
+                <span class="rating-number">4.92</span>
             </div>
         </div>
+        <h3 class="tour-title">Título 1</h3>
+        <div class="tour-details">
+            <span>Detalles de la experiencia</span>
+        </div>
+        <div class="price-container">
+            <span class="price">Precio</span>
+            <span class="price-period">por persona</span>
+        </div>
+        <!-- Contador de tickets -->
+        <div class="ticket-counter">
+            <button class="btn-decrease" onclick="decreaseTicketCount()">-</button>
+            <span id="ticket-count">1</span>
+            <button class="btn-increase" onclick="increaseTicketCount()">+</button>
+        </div>
+        <!-- Botón de reservar -->
+        <button class="btn-reserve">Reservar</button>
+    </div>
+</div>
+
 
         <!-- Tarjeta 2 -->
         <div class="tour-card">
@@ -262,3 +267,19 @@
 
     </div>
 </section>
+<script>
+    let ticketCount = 1;
+
+    function increaseTicketCount() {
+        ticketCount++;
+        document.getElementById("ticket-count").innerText = ticketCount;
+    }
+
+    function decreaseTicketCount() {
+        if (ticketCount > 1) {
+            ticketCount--;
+            document.getElementById("ticket-count").innerText = ticketCount;
+        }
+    }
+</script>
+</body>

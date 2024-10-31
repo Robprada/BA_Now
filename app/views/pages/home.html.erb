@@ -1,17 +1,264 @@
-<h1>Under Construction</h1>
-
-<div>
-  <p>Estamos trabajando para usted</p>
-  <p>Omar esta en camino a Peru</p>
-  <p>Disculpe las molestias</p>
+<div class="hero" style="margin-top: 0;">
+    <div class="hero-image" style="background-image: url('https://res.cloudinary.com/diugmcj6k/image/upload/baup');">
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="¿A dónde quieres ir? Busca tu próxima experiencia...">
+        </div>
+    </div>
 </div>
+<section class="tours-section">
+    <h2 class="section-title">Experiencias destacadas</h2>
+    <div class="tours-grid">
+     <!-- Tarjeta 1 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 1</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
 
-<style>
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-</style>
+        <!-- Tarjeta 2 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 2</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 3</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 4 (Nueva) -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-5", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia 4" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación 4</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.75</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 4</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia 4</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio 4</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta 4</span>
+                    <span class="tag">Etiqueta 4</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Tarjeta 5 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 5</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 6 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 6</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+                <!-- Tarjeta 7 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación 7</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 7</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tarjeta 8 -->
+        <div class="tour-card">
+            <div class="image-container">
+                <%= cl_image_tag "cld-sample-4", height: 300, width: 400, crop: :fill, alt: "Descripción de la experiencia" %>
+                <button class="favorite-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+            <div class="tour-content">
+                <div class="location-rating">
+                    <span class="location">Ubicación 8</span>
+                    <div class="rating-container">
+                        <span class="rating-star">★</span>
+                        <span class="rating-number">4.92</span>
+                    </div>
+                </div>
+                <h3 class="tour-title">Título 8</h3>
+                <div class="tour-details">
+                    <span>Detalles de la experiencia</span>
+                </div>
+                <div class="price-container">
+                    <span class="price">Precio</span>
+                    <span class="price-period">por persona</span>
+                </div>
+                <div class="tour-tags">
+                    <span class="tag">Etiqueta</span>
+                    <span class="tag">Etiqueta</span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>

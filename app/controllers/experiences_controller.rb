@@ -9,7 +9,7 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
-    @user = 
+    @user =
     if @experience.save
       redirect_to root_path, notice: 'Experience was succesfully created!'
     else
@@ -18,7 +18,7 @@ class ExperiencesController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -27,6 +27,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(:title, :description, :availability, :price)
+    params.require(:experience).permit(:title, :description, :availability, :price, :photo)
   end
 end

@@ -3,3 +3,216 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+// Estilos para la sección hero
+/* Estilos para la sección hero y barra de búsqueda */
+.hero {
+  margin-top: 0;
+  width: 100%;
+  position: relative;
+  height: 500px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Overlay oscuro para mejor contraste */
+}
+
+.search-container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-box {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-box:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.search-box::placeholder {
+  color: #9ca3af;
+}
+
+/* Asegurarse que el input sea clickeable */
+.search-box {
+  position: relative;
+  z-index: 3;
+  background: white;
+}
+
+/* Estilo hover para mejor feedback visual */
+.search-box:hover {
+  border-color: #9ca3af;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .hero {
+      height: 400px;
+  }
+
+  .search-container {
+      padding: 1rem;
+  }
+
+  .search-box {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+  }
+}
+
+// Estilos para la sección de experiencias
+.tours-section {
+  padding: 40px 0; // Espaciado vertical para la sección
+  text-align: center; // Centrar el texto de la sección
+
+  .section-title {
+      font-size: 2rem; // Tamaño de fuente para el título
+      margin-bottom: 20px; // Margen inferior para el título
+  }
+
+  .tours-grid {
+      display: flex; // Usar flexbox para las tarjetas
+      flex-wrap: wrap; // Permitir que las tarjetas se envuelvan
+      justify-content: center; // Centrar las tarjetas horizontalmente
+      gap: 20px; // Espaciado entre las tarjetas
+  }
+
+  .tour-card {
+      background: white; // Color de fondo de la tarjeta
+      border-radius: 10px; // Bordes redondeados
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra de la tarjeta
+      width: 300px; // Ancho de la tarjeta
+      overflow: hidden; // Ocultar contenido desbordado
+
+      .image-container {
+          position: relative; // Necesario para la posición del botón
+          width: 100%;
+          height: 200px; // Altura fija para las imágenes
+          overflow: hidden; // Ocultar desbordes de imagen
+      }
+
+      .tour-image {
+          width: 100%; // Ancho completo de la imagen
+          height: 100%; // Altura completa de la imagen
+          object-fit: cover; // Ajustar la imagen para cubrir el contenedor
+          transition: transform 0.3s; // Transición suave al hacer hover
+      }
+
+      &:hover .tour-image {
+          transform: scale(1.05); // Efecto zoom al pasar el mouse
+      }
+
+      .favorite-button {
+          position: absolute; // Botón en posición absoluta
+          top: 10px; // Posición superior
+          right: 10px; // Posición derecha
+          background: transparent; // Fondo transparente
+          border: none; // Sin borde
+          cursor: pointer; // Cambia el cursor al pasar sobre el botón
+          z-index: 2; // Asegura que el botón esté sobre la imagen
+
+          i {
+              font-size: 1.5rem; // Tamaño del icono
+              color: white; // Color del icono
+              transition: color 0.3s; // Transición suave para el color
+          }
+
+          &:hover i {
+              color: red; // Cambia el color al pasar el mouse
+          }
+      }
+
+      .tour-content {
+          padding: 15px; // Espaciado interno de la tarjeta
+
+          .location-rating {
+              display: flex; // Usar flexbox para ubicación y rating
+              justify-content: space-between; // Espacio entre elementos
+              align-items: center; // Centrar verticalmente
+              margin-bottom: 10px; // Margen inferior
+
+              .location {
+                  font-weight: bold; // Negrita para la ubicación
+              }
+
+              .rating-container {
+                  display: flex; // Usar flexbox para estrellas y número
+                  align-items: center; // Centrar verticalmente
+
+                  .rating-star {
+                      color: gold; // Color dorado para las estrellas
+                  }
+
+                  .rating-number {
+                      margin-left: 5px; // Espacio entre estrella y número
+                  }
+              }
+          }
+
+          .tour-title {
+              font-size: 1.5rem; // Tamaño de fuente para el título
+              margin-bottom: 10px; // Margen inferior
+          }
+
+          .tour-details {
+              margin-bottom: 10px; // Margen inferior
+              font-size: 0.9rem; // Tamaño de fuente para los detalles
+              color: gray; // Color gris para los detalles
+          }
+
+          .price-container {
+              display: flex; // Usar flexbox para el precio
+              justify-content: space-between; // Espacio entre precio y periodo
+              margin-top: 10px; // Margen superior
+              font-weight: bold; // Negrita para el precio
+          }
+
+          .tour-tags {
+              display: flex; // Usar flexbox para las etiquetas
+              justify-content: flex-start; // Alinear a la izquierda
+              flex-wrap: wrap; // Permitir que las etiquetas se envuelvan
+              margin-top: 10px; // Margen superior
+
+              .tag {
+                  background: #e0e0e0; // Color de fondo de la etiqueta
+                  border-radius: 15px; // Bordes redondeados
+                  padding: 5px 10px; // Espaciado interno
+                  margin-right: 5px; // Margen entre etiquetas
+                  font-size: 0.8rem; // Tamaño de fuente de la etiqueta
+              }
+          }
+      }
+  }
+}

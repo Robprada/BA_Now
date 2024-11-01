@@ -16,8 +16,6 @@
                 <div class="image-container">
                     <% if experience.photos.attached? %>
                         <%= cl_image_tag experience.photos.first.key, height: 300, width: 400, crop: :fill, alt: experience.title %>
-                    <% else %>
-                        <%= image_tag 'default-image.jpg', height: 300, width: 400, alt: "Imagen por defecto" %>
                     <% end %>
                     <button class="favorite-button">
                     </button>

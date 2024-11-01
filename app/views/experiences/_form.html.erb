@@ -1,9 +1,8 @@
-<div class="form-title">
-  <h1>Crear Nueva Experiencia</h1>
-</div>
 <div class="back-button-container">
 
 </div>
+
+
 
 <%= simple_form_for @experience do |f| %>
   <div class="form-inputs">
@@ -16,7 +15,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Crear Experiencia", class: 'btn btn-primary' %>
+    <%= f.submit "Actualizar Experiencia", class: 'btn btn-primary' %>
     <% if current_user == @experience.user %>
       <%= link_to 'Eliminar', @experience, method: :delete, data: { confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
 

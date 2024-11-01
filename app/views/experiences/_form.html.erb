@@ -1,0 +1,16 @@
+<%= simple_form_for @experience, html: { multipart: true } do |f| %>
+  <div class="experience-form-card">
+    <%= f.input :title, label: "Título" %>
+    <%= f.input :description, as: :text, label: "Descripción" %>
+    <%= f.input :availability, label: "Disponibilidad" %>
+    <%= f.input :price, label: "Precio", placeholder: "Precio por persona" %>
+    <%= f.input :address, label: "Dirección" %>
+
+    <div class="form-group">
+      <label>Fotos</label>
+      <%= f.file_field :photos, multiple: true, accept: 'image/*' %>
+    </div>
+
+    <%= f.submit "Guardar experiencia", class: "btn-submit" %>
+  </div>
+<% end %>

@@ -59,7 +59,7 @@ puts "Creando bookings..."
   Booking.create!(
     booking_date: Date.today + rand(1..60), # Fecha aleatoria en los próximos 60 días
     hour: Time.parse(available_hours.sample),
-    tickets: rand(1..5),           # Entre 1 y 5 tickets
+    tickets: rand(1..5), # Entre 1 y 5 tickets
     user: user,
     experience: experience
   )

@@ -1,12 +1,5 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'open-uri'
+
 puts "Limpiando base de datos..."
 Booking.destroy_all
 Experience.destroy_all
@@ -24,6 +17,18 @@ created_users = users.map do |user_data|
   User.create!(user_data)
 end
 
+cloudinary_photo_ids = [
+  "uiNx0RtPV_720x0__1_aha0ds",
+  "la-bombonera-cumple-80-KMBRBC324FAK5O4OH3TT7WPPII_ismc5b",
+  "b5a7d3ad29b94ba4a364b686a5e8624d_yltsnz",
+  "clases_ndw1i1",
+  "clases-cocina-precios_kslucd",
+  "9184-yfbtoh_pjmxuo",
+  "preparaotoria-privada_qeyffv",
+  "Imparte-un-taller-de-fotografia-infantil-y-juvenil_pjezaz",
+  "Taller-de-fotografia-juvenil-andanafoto_bafg96"
+]
+
 puts "Creando experiencias..."
 experiences = [
   { title: "Tour por la ciudad", description: "Recorrido histórico por el centro", price: 2500, availability: 20, address: "Avenida Santa Fe 1305, Palermo" },
@@ -33,8 +38,20 @@ experiences = [
 
 created_experiences = experiences.each_with_index.map do |exp_data, index|
   # Assign each experience to different users
-  exp_data[:user] = created_users[index]
-  Experience.create!(exp_data)
+  exp_data[:user_id] = created_users[index % created_users.size].id
+  experience = Experience.create!(exp_data)
+
+  # Purge existing photos
+  experience.photos.purge
+
+  # Attach 3 photos to each experience
+  start_index = index * 3
+  end_index = start_index + 2
+  (start_index..end_index).each do |photo_index|
+    experience.photos.attach(io: URI.open("https://res.cloudinary.com/diugmcj6k/image/upload/#{cloudinary_photo_ids[photo_index]}.jpg"), filename: "#{SecureRandom.hex}.jpg")
+  end
+
+  experience
 end
 
 available_hours = [
@@ -52,8 +69,8 @@ puts "Creando bookings..."
 50.times do |i|
   # select a random experience
   experience = created_experiences.sample
-  # select a user thats not the owner of the experience
-  available_users = created_users - [experience.user]
+  # select a user that's not the owner of the experience
+  available_users = created_users - [User.find(experience.user_id)]
   user = available_users.sample
 
   Booking.create!(

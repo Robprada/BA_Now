@@ -1,16 +1,26 @@
-<%= simple_form_for @experience, html: { multipart: true } do |f| %>
-  <div class="experience-form-card">
-    <%= f.input :title, label: "Título" %>
-    <%= f.input :description, as: :text, label: "Descripción" %>
-    <%= f.input :availability, label: "Disponibilidad" %>
-    <%= f.input :price, label: "Precio", placeholder: "Precio por persona" %>
-    <%= f.input :address, label: "Dirección" %>
+<div class="back-button-container">
 
-    <div class="form-group">
-      <label>Fotos</label>
-      <%= f.file_field :photos, multiple: true, accept: 'image/*' %>
-    </div>
+</div>
 
-    <%= f.submit "Guardar experiencia", class: "btn-submit" %>
+
+
+<%= simple_form_for @experience do |f| %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :availability %>
+    <%= f.input :address %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Actualizar Experiencia", class: 'btn btn-primary' %>
+    <% if current_user == @experience.user %>
+      <%= link_to 'Eliminar', @experience, method: :delete, data: { confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
+
+      <%= link_to 'Volver a la experiencia', experience_path(@experience), class: 'btn btn-secondary' %>
+</div>
+    <% end %>
   </div>
 <% end %>

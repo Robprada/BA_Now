@@ -1,2 +1,117 @@
-<h1>Experiences#show</h1>
-<p>Find me in app/views/experiences/show.html.erb</p>
+<div class="back-button-container">
+  <%= link_to 'Volver a la página principal', root_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Editar', edit_experience_path(@experience), class: 'btn btn-warning' %>
+  <%= link_to 'Eliminar', @experience, method: :delete, data: { confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
+</div>
+</div>
+
+<h1 class="experience-title"><%= @experience.title %></h1>
+
+<div class="carousel-container">
+  <div class="carousel slide" id="experienceCarousel" data-bs-ride="carousel">
+    <% if @experience.photos.attached? %>
+      <div class="carousel-inner">
+        <% @experience.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <%= cl_image_tag photo.key, height: 400, width: 600, crop: :fill, alt: @experience.title %>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#experienceCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#experienceCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    <% else %>
+      <%= image_tag 'default-image.jpg', height: 400, width: 600, alt: "Imagen por defecto" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="experience-container">
+  <div class="experience-details">
+    <h2>Descripción</h2>
+    <p><%= @experience.description %></p>
+
+    <h3>Detalles adicionales</h3>
+    <ul>
+      <li><strong>Precio:</strong> <%= number_to_currency(@experience.price) %></li>
+      <li><strong>Disponibilidad:</strong> <%= @experience.availability %></li>
+      <li><strong>Ubicación:</strong> <%= @experience.address %></li>
+    </ul>
+  </div>
+
+  <div class="booking-card">
+    <h2>Reserva tu experiencia</h2>
+    <%= simple_form_for [@experience, @booking] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :booking_date, as: :date %>
+        <%= f.input :hour, as: :time %>
+        <div class="quantity-selector">
+          <button type="button" class="btn-quantity" onclick="decreaseTickets()">-</button>
+          <span class="ticket-quantity" id="ticketQuantity">1</span>
+          <button type="button" class="btn-quantity" onclick="increaseTickets()">+</button>
+          <%= f.input :tickets, as: :hidden, input_html: { id: 'ticketsInput', value: 1 } %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Confirmar Reserva", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="reviews-container">
+  <div class="reviews-section">
+    <h2>Comentarios</h2>
+    <% @experience.reviews.each do |review| %>
+      <div class="review">
+        <p><strong><%= review.user.name %>:</strong></p>
+        <p>Rating: <%= review.rating %> ★</p>
+        <p><%= review.comments %></p>
+      </div>
+    <% end %>
+
+    <h3>Deja tu comentario</h3>
+    <%= simple_form_for [@experience, Review.new] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :rating, collection: 1..5, prompt: 'Selecciona una calificación' %>
+        <%= f.input :comments, as: :text %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Enviar" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function increaseTickets() {
+    let quantity = parseInt(document.getElementById('ticketQuantity').textContent);
+    quantity += 1;
+    document.getElementById('ticketQuantity').textContent = quantity;
+    document.getElementById('ticketsInput').value = quantity;
+  }
+
+  function decreaseTickets() {
+    let quantity = parseInt(document.getElementById('ticketQuantity').textContent);
+    if (quantity > 1) {
+      quantity -= 1;
+      document.getElementById('ticketQuantity').textContent = quantity;
+      document.getElementById('ticketsInput').value = quantity;
+    }
+  }
+</script>
+
+<style>
+  .action-buttons {
+    margin-top: 20px;
+  }
+
+  .action-buttons .btn {
+    margin-right: 10px; /* Espacio entre botones */
+  }
+</style>

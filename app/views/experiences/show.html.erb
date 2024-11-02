@@ -58,7 +58,7 @@
         <div class="quantity-selector">
           <button type="button" class="btn-quantity" onclick="decreaseTickets()">-</button>
           <span class="ticket-quantity" id="ticketQuantity">1</span>
-          <button type="button" class="btn-quantity" onclick="increaseTickets()">++</button>
+          <button type="button" class="btn-quantity" onclick="increaseTickets()">+</button>
           <%= f.input :tickets, as: :hidden, input_html: { id: 'ticketsInput', value: 1 } %>
         </div>
       </div>

@@ -1,9 +1,8 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show edit update destroy]
   before_action :authorize_user!, only: %i[edit update destroy]
-  
   def index
-    @experiences = current_user.experiences
+    @experiences = current_user.created_experiences
   end
 
   def show

@@ -3,14 +3,16 @@ class BookingsController < ApplicationController
   #   @bookings = Booking.all
   # end
 
-  def new
-    @experience = Experience.find(params[:id])
-    @booking = @experience.bookings.new
-  end
+  # def new
+  #   @experience = Experience.find(params[:id])
+  #   @booking = Booking.new
+  # end
 
   def create
-    @experince = Experience.find(params[:id])
-    @booking = @experience.bookings.new(booking_params)
+    # @experince = Experience.find(params[:experience_id])
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+
     if @booking.save
       redirect_to root_path, notice: 'Booking created succesfully!'
     else
@@ -26,6 +28,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:booking_date, :hour, :tickets)
+    params.require(:booking).permit(:experience_id, :booking_date, :hour, :tickets)
   end
 end

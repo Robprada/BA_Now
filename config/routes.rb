@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   # resources :users, only: [:new, :create, :edit, :update]
 
   resources :experiences, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show]
     resources :reviews, only: [:new, :create]
   end
-  resources :bookings, only: [:destroy]
+
+   get "my_bookings", to: "bookings#index", as: "my_bookings"
+
+  resources :bookings, only: [:index, :destroy]
   resources :reviews, only: [:destroy]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

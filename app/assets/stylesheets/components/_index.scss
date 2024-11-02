@@ -6,8 +6,6 @@
 @import "map";
 @import "address_autocomplete";
 
-// Estilos para la sección hero
-/* Estilos para la sección hero y barra de búsqueda */
 .hero {
   margin-top: 0;
   width: 100%;
@@ -33,7 +31,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4); /* Overlay oscuro para mejor contraste */
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .search-container {

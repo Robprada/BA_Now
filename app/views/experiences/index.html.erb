@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
   <section class="tours-section" style="margin-top: 0;">
       <h2 class="section-title">Mis Experiencias</h2>
+      <p>Tienes <%= @experiences.count %> experiencia(s) creada(s).</p>
+      <%= link_to 'Crear Nueva Experiencia', new_experience_path, class: 'btn btn-primary' %>
       <div class="tours-grid">
           <% @experiences.each do |experience| %>
               <div class="tour-card">
@@ -27,9 +29,5 @@
       </div>
   </section>
 <% else %>
-<<<<<<< HEAD
   <p>Por favor, inicia sesión para ver tus experiencias.</p>
-=======
-  <p>Por favor, inicia sesión para ver tus experiencias</p>
->>>>>>> 3e359a3efc6d2da68d19d892cddf1bb0daed569b
 <% end %>

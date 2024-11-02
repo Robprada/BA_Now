@@ -1,2 +1,35 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<% if user_signed_in? %>
+  <section class="tours-section booked-tours-section" style="margin-top: 0;">
+    <h2 class="section-title">Mis Reservas</h2>
+    <p>Tienes <%= @booked_experiences.count %> reserva(s).</p>
+    <div class="tours-grid">
+        <% @booked_experiences.each do |experience| %>
+            <div class="tour-card">
+                <div class="image-container">
+                    <% if experience.photos.attached? %>
+                        <%= cl_image_tag experience.photos.first.key, height: 300, width: 400, crop: :fill, alt: experience.title %>
+                    <% end %>
+                </div>
+                <div class="tour-content">
+                    <h3 class="tour-title"><%= experience.title %></h3>
+                    <div class="tour-details">
+                        <span><%= experience.description %></span>
+                    </div>
+                    <div class="price-container">
+                        <% booking = current_user.bookings.find_by(experience: experience) %>
+                        <% if booking %>
+                          <span class="price"><%= booking.tickets %> tickets</span>
+                        <% end %>
+                    </div>
+                    <div class="actions">
+
+                        <%= link_to "Cancelar Reserva", booking_path(current_user.bookings.find_by(experience: experience)),data: { turbo_method: :delete , turbo_confirm: 'Estas seguro de cancelar?' },class: 'btn btn-danger' %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+  </section>
+<% else %>
+  <p>Por favor, inicia sesión para ver tus reservas.</p>
+<% end %>

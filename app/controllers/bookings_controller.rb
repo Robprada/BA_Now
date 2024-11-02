@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   # def index
   #   @bookings = Booking.all
   # end
@@ -7,6 +8,9 @@ class BookingsController < ApplicationController
   #   @experience = Experience.find(params[:id])
   #   @booking = Booking.new
   # end
+  def index
+    @booked_experiences = current_user.booked_experiences
+  end
 
   def create
     # @experince = Experience.find(params[:experience_id])
@@ -21,9 +25,18 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
+    @booking = current_user.bookings.find(params[:id])
+    if @booking.destroy
+      redirect_to bookings_path, notice: 'Reserva cancelada con éxito.'
+    else
+      redirect_to bookings_path, alert: 'Hubo un problema al cancelar la reserva.'
+    end
   end
+
+  # def destroy
+  #   @booking = Booking.find(params[:id])
+  #   @booking.destroy
+  # end
 
   private
 

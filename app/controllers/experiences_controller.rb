@@ -1,6 +1,10 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show edit update destroy]
-  before_action :authorize_user!, only: %i[edit update destroy] # Verifica que el usuario sea el creador
+  before_action :authorize_user!, only: %i[index edit update destroy]
+
+  def index
+    @experiences = current_user.experiences
+  end
 
   def show
     @booking = Booking.new

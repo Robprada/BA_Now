@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+  <section class="tours-section" style="margin-top: 0;">
+      <h2 class="section-title">Mis Experiencias</h2>
+      <div class="tours-grid">
+          <% @experiences.each do |experience| %>
+              <div class="tour-card">
+                  <div class="image-container">
+                      <% if experience.photos.attached? %>
+                          <%= cl_image_tag experience.photos.first.key, height: 300, width: 400, crop: :fill, alt: experience.title %>
+                      <% end %>
+                  </div>
+                  <div class="tour-content">
+                      <h3 class="tour-title"><%= experience.title %></h3>
+                      <div class="tour-details">
+                          <span><%= experience.description %></span>
+                      </div>
+                      <div class="price-container">
+                          <span class="price"><%= number_to_currency(experience.price) %></span>
+                          <span class="price-period">por persona</span>
+                      </div>
+                      <div class="actions">
+                          <button class="btn-reserve" onclick="location.href='<%= experience_path(experience) %>'">Ver Detalles</button>
+                      </div>
+                  </div>
+              </div>
+          <% end %>
+      </div>
+  </section>
+<% else %>
+  <p>Por favor, inicia sesión para ver tus experiencias.</p>
+<% end %>

@@ -65,22 +65,22 @@ available_hours = [
   "18:00"
 ]
 
-puts "Creando bookings..."
-50.times do |i|
-  # select a random experience
-  experience = created_experiences.sample
-  # select a user that's not the owner of the experience
-  available_users = created_users - [User.find(experience.user_id)]
-  user = available_users.sample
+# puts "Creando bookings..."
+# 50.times do |i|
+#   # select a random experience
+#   experience = created_experiences.sample
+#   # select a user that's not the owner of the experience
+#   available_users = created_users - [User.find(experience.user_id)]
+#   user = available_users.sample
 
-  Booking.create!(
-    booking_date: Date.today + rand(1..60), # Fecha aleatoria en los próximos 60 días
-    hour: Time.parse(available_hours.sample),
-    tickets: rand(1..5), # Entre 1 y 5 tickets
-    user: user,
-    experience: experience
-  )
-end
+#   Booking.create!(
+#     booking_date: Date.today + rand(1..60), # Fecha aleatoria en los próximos 60 días
+#     hour: Time.parse(available_hours.sample),
+#     tickets: rand(1..5), # Entre 1 y 5 tickets
+#     user: user,
+#     experience: experience
+#   )
+# end
 
 puts "Seeds completados!"
 puts "Creados:"

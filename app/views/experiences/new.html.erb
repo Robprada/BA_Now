@@ -19,5 +19,7 @@
                     }}%>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Crear Experiencia", class: 'btn btn-primary' %>
+    <%= link_to 'Salir', root_path, class: 'btn btn-secondary'%>
   </div>
+
 <% end %>

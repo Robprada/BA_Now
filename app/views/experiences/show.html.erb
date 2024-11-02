@@ -1,7 +1,7 @@
 <div class="back-button-container">
   <%= link_to 'Volver a la página principal', root_path, class: 'btn btn-secondary' %>
   <%= link_to 'Editar', edit_experience_path(@experience), class: 'btn btn-warning' %>
-  <%= link_to 'Eliminar', @experience, method: :delete, data: { confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Eliminar', @experience, data: { turbo_method: :delete, confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
 </div>
 </div>
 

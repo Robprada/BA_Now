@@ -43,7 +43,7 @@ class ExperiencesController < ApplicationController
 
   def destroy
     @experience.destroy
-    redirect_to experiences_path, notice: 'La experiencia fue eliminada exitosamente.'
+    redirect_to root_path, notice: 'La experiencia fue eliminada exitosamente.'
   end
 
   private

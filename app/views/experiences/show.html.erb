@@ -50,13 +50,14 @@
   <div class="booking-card">
     <h2>Reserva tu experiencia</h2>
     <%= simple_form_for [@experience, @booking] do |f| %>
+    <%= f.input :experience_id, as: :hidden, input_html: { value: @experience.id } %>
       <div class="form-inputs">
         <%= f.input :booking_date, as: :date, html5: true %>
         <%= f.input :hour, as: :time %>
         <div class="quantity-selector">
           <button type="button" class="btn-quantity" onclick="decreaseTickets()">-</button>
           <span class="ticket-quantity" id="ticketQuantity">1</span>
-          <button type="button" class="btn-quantity" onclick="increaseTickets()"></button>
+          <button type="button" class="btn-quantity" onclick="increaseTickets()">+</button>
           <%= f.input :tickets, as: :hidden, input_html: { id: 'ticketsInput', value: 1 } %>
         </div>
       </div>
@@ -118,3 +119,5 @@
     margin-right: 10px; /* Espacio entre botones */
   }
 </style>
+
+<%# <% raise %> 

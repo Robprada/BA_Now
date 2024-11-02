@@ -2,17 +2,11 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show edit update destroy]
   before_action :authorize_user!, only: %i[edit update destroy] # Verifica que el usuario sea el creador
 
-  def index
-    if params[:search].present?
-      @experiences = Experience.where("title ILIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @experiences = Experience.all
-    end
-  end
-
   def show
     @booking = Booking.new
-    @experience = Experience.find(params[:id])
+    @markers = [{ lat: @experience.latitude,
+                  lng: @experience.longitude,
+                  info_window_html: render_to_string(partial: "info_window", locals: { experience: @experience }) }]
   end
 
   def new
@@ -30,9 +24,13 @@ class ExperiencesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   def edit
     @experience = Experience.find(params[:id])
-    redirect_to experiences_path, alert: 'No tienes permiso para editar esta experiencia.' unless current_user == @experience.user
+    return if current_user == @experience.user
+
+    redirect_to experiences_path,
+                alert: 'No tienes permiso para editar esta experiencia.'
   end
 
   def update
@@ -55,10 +53,14 @@ class ExperiencesController < ApplicationController
   end
 
   def authorize_user!
-    redirect_to experiences_path, alert: 'No tienes permiso para realizar esta acción.' unless @experience.user == current_user
+    return if @experience.user == current_user
+
+    redirect_to experiences_path,
+                alert: 'No tienes permiso para realizar esta acción.'
   end
 
   def experience_params
-    params.require(:experience).permit(:title, :description, :availability, :price, :address, photos: [])
+    params.require(:experience).permit(:title, :description, :availability, :price, :address, :latitude, :longitude,
+                                       photos: [])
   end
 end

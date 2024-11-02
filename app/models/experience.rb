@@ -7,5 +7,5 @@ class Experience < ApplicationRecord
   validates :title, :description, :availability, :price, :address, presence: true
 
   geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address? # Actualiza direccion si se modifica el campo
+  after_validation :geocode, if: :will_save_change_to_address?
 end

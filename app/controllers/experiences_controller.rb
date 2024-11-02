@@ -29,7 +29,6 @@ class ExperiencesController < ApplicationController
   end
 
   def edit
-    @experience = Experience.find(params[:id])
     return if current_user == @experience.user
 
     redirect_to experiences_path,
@@ -38,7 +37,8 @@ class ExperiencesController < ApplicationController
 
   def update
     if @experience.update(experience_params)
-      redirect_to experience_path(@experience), notice: 'La experiencia fue actualizada exitosamente!'
+      @experience.photos.attach(params[:experience][:photos]) if params[:experience][:photos].present?
+      redirect_to @experience, notice: 'La experiencia fue actualizada exitosamente!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -63,7 +63,8 @@ class ExperiencesController < ApplicationController
   end
 
   def experience_params
-    params.require(:experience).permit(:title, :description, :availability, :price, :address,
-                                       photos: [])
+    params.require(:experience).permit(:title, :description, :availability, :price, :address)
+    # Conditionally permit :photos if they are present in the form data
+    # permitted_params[:photos] = params[:experience][:photos] if params[:experience][:photos].present?
   end
 end

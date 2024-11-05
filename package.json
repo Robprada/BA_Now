@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "star-rating.js": "^4.3.1"
+  }
+}

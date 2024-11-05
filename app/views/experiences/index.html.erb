@@ -1,8 +1,15 @@
 <% if user_signed_in? %>
+
+<div class="back-button-container">
+  <%= link_to root_path, class: 'btn btn-secondary' do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
+</div>
+
   <section class="tours-section" style="margin-top: 0;">
       <h2 class="section-title">Mis Experiencias</h2>
       <p>Tienes <%= @experiences.count %> experiencia(s) creada(s).</p>
-      <%= link_to 'Crear Nueva Experiencia', new_experience_path, class: 'btn btn-primary' %>
+      <%= link_to 'Crear Nueva Experiencia', new_experience_path, class: 'btn btn-success create-experience-button', style: 'margin-bottom: 20px; border-radius: 5px;'  %>
       <div class="tours-grid">
           <% @experiences.each do |experience| %>
               <div class="tour-card">

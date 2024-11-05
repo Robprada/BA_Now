@@ -7,13 +7,22 @@
 .carousel-container,
 .experience-details,
 .reviews-container {
+  border-radius: 10px;
   max-width: 800px;
   margin: 20px auto;
 }
 
 .carousel {
+  border-radius: 10px;
   margin: 40px auto;
 }
+
+.carousel-container,
+.carousel-inner,
+.carousel-item img {
+  border-radius: 10px;
+}
+
 
 .experience-details {
   background-color: #f9f9f9;
@@ -63,12 +72,21 @@
   margin: 15px 0;
 }
 
-.form-actions {
+.form-action {
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .back-button-container .btn {
   margin-right: 10px;
   text-align: left;
+}
+
+.form-actions-comments {
+  margin-top: 20px;
+  text-align: left;
+
+}
+.back-button-container .btn {
+  border-radius: 10px;
 }

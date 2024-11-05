@@ -1,42 +1,5 @@
 .tours-section, .booked-tours-section {
   margin-top: 0;
-  padding: 20px;
-}
-
-.section-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.tours-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.tour-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-.search-box:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-}
-
-.tours-section,
-.booked-tours-section {
-  margin-top: 0;
   padding: 40px 0;
   text-align: center;
 
@@ -63,6 +26,12 @@
       width: 100%;
       height: 200px;
       overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     .tour-title {
@@ -70,27 +39,39 @@
       margin-bottom: 10px;
     }
 
+    .tour-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .tour-details {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
     .price-container {
       display: flex;
       justify-content: space-between;
       font-weight: bold;
+      margin-bottom: 15px;
     }
 
     .actions {
       display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
+      justify-content: center;
+      border-radius: 10px;
 
       .btn-cancel {
-        padding: 10px 15px;
-        border-radius: 5px;
-        background-color: red;
-        color: white;
+        border-radius: 10px;
+        background-color: #ff4d4d;
+        color: #fff;
+        padding: 8px 12px;
         text-decoration: none;
-        cursor: pointer;
+        transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: darkred;
+          background-color: #e60000;
         }
       }
     }
@@ -109,42 +90,19 @@
   }
 }
 
-.tour-content {
-  padding: 15px;
-  text-align: center;
+.btn {
+  border-radius: 10px; /* General para todos los botones */
 }
 
-.tour-title {
-  font-size: 20px;
-  margin: 10px 0;
+.btn-danger.rounded-btn {
+  border-radius: 10px; /* Asegurar que los botones de peligro también se redondeen */
 }
 
-.tour-details {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
+.search-box:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-.price-container {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-
-  .btn-cancel {
-    background-color: #ff4d4d;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #e60000;
-    }
-  }
+.back-button-container {
+  margin-bottom: 20px;
 }

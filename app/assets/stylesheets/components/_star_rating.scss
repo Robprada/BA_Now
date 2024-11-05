@@ -1,0 +1,22 @@
+.star-rating {
+  position: relative;
+}
+
+.rating-stars {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.rating-stars .star {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.rating-stars .star:hover,
+.rating-stars .star.is-active {
+  color: #ffd700;
+}
+
+.rating-stars .star:not(.is-active) {
+  color: #e4e4e4;
+}

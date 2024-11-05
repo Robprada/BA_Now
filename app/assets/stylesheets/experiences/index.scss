@@ -8,11 +8,24 @@
       margin-bottom: 20px;
   }
 
+  .create-experience-button {
+      border-radius: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+          background-color: #218838;
+      }
+  }
+
   .tours-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
   }
 
   .tour-card {
@@ -42,11 +55,7 @@
       .actions {
           display: flex;
           justify-content: space-between;
-          margin-top: 10px;
-
-          // Añadir margen al contenedor de acciones
-          margin-top: 15px; // Espaciado adicional aquí si es necesario
-
+          margin-top: 15px;
           .btn {
               padding: 10px 15px;
               border-radius: 5px;
@@ -79,7 +88,6 @@
 }
 
 .booked-tours-section {
-
   .section-title {
       color: #333;
   }

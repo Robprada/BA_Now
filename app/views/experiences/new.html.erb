@@ -1,9 +1,6 @@
 <div class="form-title">
   <h1>Crear Nueva Experiencia</h1>
 </div>
-<div class="back-button-container">
-
-</div>
 
 <%= simple_form_for @experience do |f| %>
   <div class="form-inputs">
@@ -12,14 +9,16 @@
     <%= f.input :price %>
     <%= f.input :availability %>
     <%= f.input :address,
-    input_html: {data: { address_autocomplete_target: "address"}, class: "mapboxgl-ctrl-geocoder d-none"  },
-    wrapper_html: {data: {
-                    controller: "address-autocomplete",
-                    address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
-                    }}%>
+      input_html: { data: { address_autocomplete_target: "address" }, class: "mapboxgl-ctrl-geocoder d-none" },
+      wrapper_html: { data: {
+        controller: "address-autocomplete",
+        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]
+      }} %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Crear Experiencia", class: 'btn btn-primary' %>
-    <%= link_to 'Salir', root_path, class: 'btn btn-secondary'%>
-  </div>
 
+    <div class="form-actions">
+    <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, root_path, class: 'btn btn-secondary back-button' %>
+      <%= f.submit "Crear Experiencia", class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>

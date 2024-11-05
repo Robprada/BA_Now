@@ -1,4 +1,11 @@
 <% if user_signed_in? %>
+
+<div class="back-button-container">
+  <%= link_to root_path, class: 'btn btn-secondary' do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
+</div>
+
   <section class="tours-section booked-tours-section" style="margin-top: 0;">
     <h2 class="section-title">Mis Reservas</h2>
     <p>Tienes <%= @booked_experiences.count %> reserva(s).</p>
@@ -23,7 +30,7 @@
                     </div>
                     <div class="actions">
 
-                        <%= link_to "Cancelar Reserva", booking_path(current_user.bookings.find_by(experience: experience)),data: { turbo_method: :delete , turbo_confirm: 'Estas seguro de cancelar?' },class: 'btn btn-danger' %>
+                        <%= link_to "Cancelar Reserva", booking_path(current_user.bookings.find_by(experience: experience)), data: { turbo_method: :delete, turbo_confirm: 'Estas seguro de cancelar?' }, class: 'btn btn-danger rounded-btn' %>
                     </div>
                 </div>
             </div>

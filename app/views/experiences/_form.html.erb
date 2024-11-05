@@ -1,7 +1,5 @@
 <div class="back-button-container">
-
 </div>
-
 
 <%= simple_form_for @experience do |f| %>
   <div class="form-inputs">
@@ -14,11 +12,17 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Actualizar Experiencia", class: 'btn btn-primary' %>
     <% if current_user == @experience.user %>
-      <%= link_to 'Eliminar', @experience, data: { turbo_method: :delete, confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' %>
-      <%= link_to 'Volver a la experiencia', experience_path(@experience), class: 'btn btn-secondary' %>
-</div>
+
+      <%= link_to experience_path(@experience), class: 'btn btn-secondary' do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+
+      <%= link_to @experience, data: { turbo_method: :delete, confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
     <% end %>
+
+    <%= f.submit "Actualizar Experiencia", class: 'btn btn-primary' %>
   </div>
 <% end %>

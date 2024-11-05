@@ -1,8 +1,9 @@
 <div class="hero" style="margin-top: 0;">
     <div class="hero-image" style="background-image:url('https://res.cloudinary.com/diugmcj6k/image/upload/baup');">
         <div class="search-container">
-            <%= form_with url: experiences_path, method: :get, local: true do %>
-                <input type="text" name="search" class="search-box" placeholder="¿A dónde quieres ir? Busca tu próxima experiencia..." value="<%= params[:search] %>">
+            <%= form_with url: root_path, method: :get, local: true, class: "d-flex" do %>
+                <%= text_field_tag :query, params[:query], class: 'search-box', placeholder: "¿A dónde quieres ir? Busca tu próxima experiencia..." %>
+                <%= submit_tag "Buscar", name:"", class: "btn btn-primary"%>
             <% end %>
         </div>
     </div>

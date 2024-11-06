@@ -1,0 +1,89 @@
+footer {
+  background-color: #333333; // Footer background color
+  .rating {
+    .star {
+      font-size: 24px;
+      color: #ccc; /* Default color for empty stars */
+    }
+
+    .star.filled {
+      color: #e6b114; /* Color for filled stars */
+    }
+
+    .star.half {
+      color: #ccc; /* Color for half stars */
+      position: relative;
+    }
+
+    .star.half::before {
+      content: '\2605'; /* Unicode for filled star */
+      color: #e6b114; /* Color for the empty part of the half star */
+      position: absolute;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+  }
+
+  .app-method {
+    a {
+      margin-left: 10px;
+      color: #ffffff; // Icon color
+      font-size: 1.5rem; // Size for social media icons
+      transition: color 0.3s;
+
+      &:hover {
+          color: #ffcc00; // Change color on hover
+      }
+    }
+  }
+
+  .payment-methods {
+      display: flex;
+      i {
+          font-size: 2rem; // Adjust icon size as needed
+          margin-right: 10px;
+          color: #ffffff; // Icon color
+      }
+  }
+
+  .social-icons {
+      a {
+          margin-left: 10px;
+          color: #ffffff; // Icon color
+          font-size: 1.5rem; // Size for social media icons
+          transition: color 0.3s;
+
+          &:hover {
+              color: #ffcc00; // Change color on hover
+          }
+      }
+  }
+
+  .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+          color: #ffffff; // Footer link color
+          text-decoration: none;
+          margin: 0 5px;
+          transition: color 0.3s;
+
+          &:hover {
+              color: #ffcc00; // Change color on hover
+          }
+      }
+      .footer-separator {
+          color: #ffffff; // Separator color
+          margin: 0 5px;
+      }
+  }
+
+  p {
+      margin-bottom: 10px; // Space below footer text
+  }
+  hr {
+      border-color: #333333; // Separator color
+  }
+}

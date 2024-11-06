@@ -1,0 +1,70 @@
+<footer class=" text-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Cómo nos valoran</h5>
+                <div class="rating">
+                  <% rating = 9.1 %>
+                  <% filled_stars = (rating / 2).floor %>
+                  <% half_star = (rating / 2) % 1 >= 0.5 %>
+
+                  <% 5.times do |i| %>
+                    <% if i < filled_stars %>
+                      <span class="star filled">&#9733;</span>
+                    <% elsif i == filled_stars && half_star %>
+                      <span class="star half">&#9733;</span>
+                    <% else %>
+                      <span class="star">&#9733;</span>
+                    <% end %>
+                  <% end %>
+                  <span class="rating-score"><%= rating %>/10</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <h5>Descarga nuestra APP</h5>
+                <div class="app-method">
+                  <a href="#" class="me-2"> <i class="fa-brands fa-app-store-ios"></i></a>
+                  <a href="#"> <i class="fa-brands fa-android"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Medios de pago</h5>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-diners-club"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <h5>Síguenos</h5>
+                <div class="social-icons">
+                   <a href="https://github.com/Robprada/BA_Now"><i class="fab fa-github"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col text-center">
+                <p class="small mb-0"> Buenos Tours @ 2024</p>
+                <div class="footer-links">
+                    <a href="#">Condiciones generales</a>
+                    <span class="footer-separator">·</span>
+                    <a href="#">Aviso legal</a>
+                    <span class="footer-separator">·</span>
+                    <a href="#">Política de privacidad</a>
+                    <span class="footer-separator">·</span>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

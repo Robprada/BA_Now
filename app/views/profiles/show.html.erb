@@ -1,0 +1,39 @@
+<div class="container profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <h1>Mi Perfil</h1>
+      <%= link_to edit_profile_path, class: "btn btn-primary" do %>
+        <i class="fas fa-edit"></i> Editar Perfil
+      <% end %>
+    </div>
+
+    <div class="profile-info">
+      <div class="info-section">
+        <h3>Información Personal</h3>
+        <div class="info-item">
+          <strong>Username:</strong>
+          <span><%= @user.username %></span>
+        </div>
+        <div class="info-item">
+          <strong>Email:</strong>
+          <span><%= @user.email %></span>
+        </div>
+        <div class="info-item">
+          <strong>Municipio:</strong>
+          <span><%= @user.municipality %></span>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stat-card">
+          <span class="stat-number"><%= @created_experiences.count %></span>
+          <span class="stat-label">Experiencias Creadas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number"><%= @booked_experiences.count %></span>
+          <span class="stat-label">Reservas Realizadas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

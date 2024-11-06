@@ -15,111 +15,124 @@
   <% end %>
 </div>
 
-<h1 class="experience-title"><%= @experience.title %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <h1 class="experience-title"><%= @experience.title %></h1>
 
-<div class="carousel-container">
-  <div class="carousel slide" id="experienceCarousel" data-bs-ride="carousel">
-    <% if @experience.photos.attached? %>
-      <div class="carousel-inner">
-        <% @experience.photos.each_with_index do |photo, index| %>
-          <div class="carousel-item <%= 'active' if index == 0 %>">
-            <%= cl_image_tag photo.key, height: 400, width: 1200, crop: :fill, alt: @experience.title %>
-          </div>
-        <% end %>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#experienceCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#experienceCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    <% end %>
-  </div>
-</div>
-
-<div class="experience-container">
-  <div class="experience-details">
-    <h2>Descripción</h2>
-    <p><%= @experience.description %></p>
-
-    <h3>Detalles adicionales</h3>
-    <ul>
-      <li><strong>Precio:</strong> <%= number_to_currency(@experience.price) %></li>
-      <li><strong>Disponibilidad:</strong> <%= @experience.availability %></li>
-      <li><strong>Ubicación:</strong> <%= @experience.address %></li>
-      <div class="map", style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </ul>
-  </div>
-
-<div class="booking-card">
-  <h2>Reserva tu experiencia</h2>
-  <%= simple_form_for [@experience, @booking] do |f| %>
-    <%= f.input :experience_id, as: :hidden, input_html: { value: @experience.id } %>
-    <div class="form-inputs">
-      <%= f.input :booking_date, as: :date, html5: true %>
-      <%= f.input :hour, as: :time %>
-      <div class="quantity-selector">
-        <button type="button" class="btn-quantity" onclick="decreaseTickets()">-</button>
-        <span class="ticket-quantity" id="ticketQuantity">1</span>
-        <button type="button" class="btn-quantity" onclick="increaseTickets()">+</button>
-        <%= f.input :tickets, as: :hidden, input_html: { id: 'ticketsInput', value: 1 } %>
-      </div>
-    </div>
-    <div class="form-action">
-      <%= f.submit "Confirmar Reserva", class: 'btn btn-success' %>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="reviews-container">
-  <div class="reviews-section">
-    <h2>Comentarios</h2>
-    <% @experience.reviews.each do |review| %>
-      <div class="review">
-        <p><strong><%= review.user.username %>:</strong></p>
-        <p>Rating: <%= review.rating %> ★</p>
-        <p><%= review.comments %></p>
-      </div>
-    <% end %>
-
-<div class="review-form">
-  <h3>Deja tu comentario</h3>
-  <%= simple_form_for [@experience, Review.new] do |f| %>
-    <div class="form-inputs">
-      <div class="star-rating" data-controller="star-rating">
-        <%= f.input :rating,
-                    as: :hidden,
-                    input_html: {
-                      class: 'star-rating-input',
-                      data: {
-                        star_rating_target: "input"
-                      }
-                    } %>
-        <div class="rating-stars">
-          <% 5.times do |i| %>
-            <i class="far fa-star"
-               data-star-rating-target="star"
-               data-value="<%= i + 1 %>"
-               data-action="click->star-rating#rate mouseenter->star-rating#highlight mouseleave->star-rating#reset"></i>
+      <div class="carousel-container">
+        <div class="carousel slide" id="experienceCarousel" data-bs-ride="carousel">
+          <% if @experience.photos.attached? %>
+            <div class="carousel-inner">
+              <% @experience.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <%= cl_image_tag photo.key, height: 400, width: 1200, crop: :fill, alt: @experience.title %>
+                </div>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#experienceCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#experienceCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           <% end %>
         </div>
       </div>
-      <%= f.input :comments,
-                  as: :text,
-                  placeholder: '¿Qué te pareció la experiencia?',
-                  label: false %>
+
+      <div class="experience-container">
+        <div class="experience-details">
+          <h2>Descripción</h2>
+          <p><%= @experience.description %></p>
+
+          <h3>Detalles adicionales</h3>
+          <ul>
+            <li><strong>Precio:</strong> <%= number_to_currency(@experience.price) %></li>
+            <li><strong>Disponibilidad:</strong> <%= @experience.availability %></li>
+            <li><strong>Ubicación:</strong> <%= @experience.address %></li>
+            <div class="map", style="width: 100%; height: 600px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reviews-container">
+        <div class="reviews-section">
+          <h2>Comentarios</h2>
+          <% @experience.reviews.each do |review| %>
+            <div class="review">
+              <p><strong><%= review.user.username %>:</strong></p>
+              <p>Rating: <%= review.rating %> ★</p>
+              <p><%= review.comments %></p>
+            </div>
+          <% end %>
+
+        <div class="review-form">
+          <h3>Deja tu comentario</h3>
+          <%= simple_form_for [@experience, Review.new] do |f| %>
+            <div class="form-inputs">
+              <div class="star-rating" data-controller="star-rating">
+                <%= f.input :rating,
+                            as: :hidden,
+                            input_html: {
+                              class: 'star-rating-input',
+                              data: {
+                                star_rating_target: "input"
+                              }
+                            } %>
+                <div class="rating-stars">
+                  <% 5.times do |i| %>
+                    <i class="far fa-star"
+                      data-star-rating-target="star"
+                      data-value="<%= i + 1 %>"
+                      data-action="click->star-rating#rate mouseenter->star-rating#highlight mouseleave->star-rating#reset"></i>
+                  <% end %>
+                </div>
+              </div>
+              <%= f.input :comments,
+                          as: :text,
+                          placeholder: '¿Qué te pareció la experiencia?',
+                          label: false %>
+            </div>
+            <div class="form-actions-comments">
+              <%= f.submit "Enviar", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-actions-comments">
-      <%= f.submit "Enviar", class: 'btn btn-primary' %>
+
+
+    <div class="col-lg-3">
+      <div class="booking-card card position-sticky">
+        <div class="card-body">
+        <h2 class="card-title">Reserva tu experiencia</h2>
+        <%= simple_form_for [@experience, @booking] do |f| %>
+          <%= f.input :experience_id, as: :hidden, input_html: { value: @experience.id } %>
+          <div class="form-inputs">
+            <%= f.input :booking_date, as: :date, html5: true %>
+            <%= f.input :hour, as: :time %>
+            <div class="quantity-selector d-flex align-items-center justify-content-between mb-3">
+              <button type="button" class="btn btn-outline-secondary btn-quantity btn-sm " onclick="decreaseTickets()">-</button>
+              <span class="ticket-quantity" id="ticketQuantity">1</span>
+              <button type="button" class="btn btn-outline-secondary btn-quantity btn-sm" onclick="increaseTickets()">+</button>
+            </div>
+          </div>
+          <div class="form-action d-flex justify-content-center">
+              <%= f.input :tickets, as: :hidden, input_html: { id: 'ticketsInput', value: 1 } %>
+            <%= f.submit "Confirmar Reserva", class: 'btn btn-success' %>
+          </div>
+            <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
 
 <script>

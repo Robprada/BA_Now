@@ -18,6 +18,7 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
+    @experience.photos.attach(params[:experience][:photos]) if params[:experience][:photos].present?
     # Asocia la experiencia solo si el usuario está identificado
     @experience.user = current_user
 

@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     # @experiences = Experience.where(sql_subquery, query: "%#{params[:query]}%")
     # @experiences = Experience.search_by_title_and_description(params[:query])
 
-    if params[:query].present? && params[:query].length >= 1
+    if params[:query].present?
       @experiences = Experience.search_by_title_and_description(params[:query])
     else
       @experiences = Experience.all
@@ -20,7 +20,10 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html # Render the default HTML view
-      format.json { render json: { results: render_to_string(partial: "experiences", formats: [:html]) } }
+      format.json do
+        render json: { results: render_to_string(partial: "experiences", formats: [:html],
+                                                 locals: { experiences: @experiences }) }
+      end
     end
   end
 end

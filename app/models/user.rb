@@ -14,11 +14,11 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   def self.from_google(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+    where(provider: auth[:provider], uid: auth[:uid]).first_or_create do |user|
+      user.email = auth[:email]
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name   # assuming you have a username field
-      user.avatar_url = auth.info.image
+      user.username = auth[:username]
+      user.avatar_url = auth[:avatar_url]
     end
   end
 end

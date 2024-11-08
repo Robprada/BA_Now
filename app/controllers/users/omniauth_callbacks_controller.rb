@@ -1,36 +1,38 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def google_oauth2
-    user = User.from_google(from_google_params)
+module Users
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    def google_oauth2
+      user = User.from_google(from_google_params)
 
-    if user.present?
-      sign_out_all_scopes
-      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-      sign_in_and_redirect user, event: :authentication
-    else
-      flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-      redirect_to new_user_session_path
+      if user.present?
+        sign_out_all_scopes
+        flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
+        sign_in_and_redirect user, event: :authentication
+      else
+        flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
+        redirect_to new_user_session_path
+      end
     end
-  end
 
-  protected
+    protected
 
-  def after_omniauth_failure_path_for(_scope)
-    new_user_session_path
-  end
+    def after_omniauth_failure_path_for(_scope)
+      new_user_session_path
+    end
 
-  private
+    private
 
-  def from_google_params
-    @from_google_params ||= {
-      uid: auth.uid,
-      email: auth.info.email,
-      username: auth.info.name,
-      provider: auth.provider,
-      avatar_url: auth.info.image
-    }
-  end
+    def from_google_params
+      @from_google_params ||= {
+        uid: auth.uid,
+        email: auth.info.email,
+        username: auth.info.name,
+        provider: auth.provider,
+        avatar_url: auth.info.image
+      }
+    end
 
-  def auth
-    @auth ||= request.env['omniauth.auth']
+    def auth
+      @auth ||= request.env['omniauth.auth']
+    end
   end
 end 

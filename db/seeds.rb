@@ -73,7 +73,7 @@ experiences = [
   { title: "Partido de polo", description: "Famoso Abierto de Palermo", price: 150000, availability: 25, address: "Av. del Libertador 4096, Palermo" },
   { title: "Casa del Diego", description: "La Casa de D10S, Historia y fútbol", price: 60000, availability: 10, address: "Lascano 2257, Villa del Parque" },
   { title: "Taller de Mate", description: "¿Cómo se prepara la famosa infusión?", price: 10000, availability: 10, address: "Ayacucho 1538, Recoleta" },
-  { title: "Autobús Turístico", description: "Autobús turístico Gray Line", price: 45000, availability: 30, address: "Av. Sta. Fe 3253, Palermo" },
+  { title: "Autobús Turístico", description: "Autobús turístico Gray Line", price: 45000, availability: 30, address: "Av. Sta. Fe 3253, Palermo" }
 ]
 
 created_experiences = experiences.each_with_index.map do |exp_data, index|

@@ -1,9 +1,8 @@
 <div class="hero" style="margin-top: 0;">
     <div class="hero-image" style="background-image:url('https://res.cloudinary.com/diugmcj6k/image/upload/baup');">
         <div class="search-container">
-            <%= form_with url: root_path, method: :get, local: true, class: "d-flex" do %>
-                <%= text_field_tag :query, params[:query], class: 'search-box', placeholder: "¿A dónde quieres ir? Busca tu próxima experiencia..." %>
-                <%= submit_tag "Buscar", name:"", class: "btn btn-primary"%>
+            <%= form_with url: root_path, method: :get, local: true, class: "d-flex", data: { controller: "search" } do %>
+                <%= text_field_tag :query, params[:query], class: 'search-box', placeholder: "¿A dónde quieres ir? Busca tu próxima experiencia...", data: { action: "keyup->search#search", search_target: "query" } %>
             <% end %>
         </div>
     </div>
@@ -12,35 +11,6 @@
 <section class="tours-section">
     <h2 class="section-title">Experiencias Disponibles</h2>
     <div class="tours-grid">
-        <% @experiences.each do |experience| %>
-            <div class="tour-card">
-                <div class="image-container">
-                    <% if experience.photos.attached? %>
-                        <%= cl_image_tag experience.photos.first.key, height: 300, width: 400, crop: :fill, alt: experience.title %>
-                    <% end %>
-                    <button class="favorite-button">
-                    </button>
-                </div>
-                <div class="tour-content">
-                    <div class="location-rating">
-                        <span class="location"><%= experience.address %></span>
-                        <div class="rating-container">
-                            <span class="rating-star">★</span>
-                            <span class="rating-number">4.92</span> <!-- Cambia esto según la lógica de tus calificaciones -->
-                        </div>
-                    </div>
-                    <h3 class="tour-title"><%= experience.title %></h3>
-                    <div class="tour-details">
-                        <span><%= experience.description %></span>
-                    </div>
-                    <div class="price-container">
-                        <span class="price"><%= number_to_currency(experience.price) %></span>
-                        <span class="price-period">por persona</span>
-                    </div>
-
-                    <button class="btn-reserve" onclick="location.href='<%= experience_path(experience) %>'">Reservar</button>
-                </div>
-            </div>
-        <% end %>
+        <%= render partial: "experiences", locals: { experiences: @experiences } %>
     </div>
 </section>

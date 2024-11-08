@@ -92,3 +92,11 @@
       color: #333;
   }
 }
+.tours-grid {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tours-grid.fade-in {
+  opacity: 1;
+}

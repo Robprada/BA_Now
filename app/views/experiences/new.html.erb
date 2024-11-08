@@ -2,7 +2,19 @@
   <h1>Crear Nueva Experiencia</h1>
 </div>
 
-<%= simple_form_for @experience do |f| %>
+<%= simple_form_for @experience, html: {
+      data: {
+        controller: "alert",
+        alert_icon_value: "warning",
+        alert_title_value: "¿Estás seguro?",
+        alert_html_value: "Crear nueva experiencia.",
+        alert_confirm_button_text_value: "¡Sí, Todo bien!",
+        alert_show_cancel_button_value: true,
+        alert_cancel_button_text_value: "Cancelar",
+        action: "submit->alert#initSweetalert",
+        turbo: false
+      }
+    } do |f| %>
   <div class="form-inputs mb-5">
     <%= f.input :title %>
     <%= f.input :description %>
@@ -17,7 +29,7 @@
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
     <div class="form-actions">
-    <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, root_path, class: 'btn btn-secondary back-button' %>
+      <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, root_path, class: 'btn btn-secondary back-button' %>
       <%= f.submit "Crear Experiencia", class: 'btn btn-primary' %>
     </div>
   </div>

@@ -30,7 +30,18 @@
                     </div>
                     <div class="actions">
 
-                        <%= link_to "Cancelar Reserva", booking_path(current_user.bookings.find_by(experience: experience)), data: { turbo_method: :delete, turbo_confirm: 'Estas seguro de cancelar?' }, class: 'btn btn-danger rounded-btn' %>
+                         <%= link_to "Cancelar Reserva", booking_path(current_user.bookings.find_by(experience: experience)), method: :delete, data: {
+                              controller: "alert",
+                              alert_icon_value: "warning",
+                              alert_title_value: "¿Estás seguro?",
+                              alert_html_value: "Eliminar esta reserva.",
+                              alert_confirm_button_text_value: "¡Sí, eliminar!",
+                              alert_show_cancel_button_value: true,
+                              alert_cancel_button_text_value: "Cancelar",
+                              action: "click->alert#confirmDelete",
+                              turbo: false
+                            }, class: 'btn btn-danger rounded-btn' %>
+
                     </div>
                 </div>
             </div>

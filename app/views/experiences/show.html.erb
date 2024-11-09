@@ -9,7 +9,17 @@
       <i class="fas fa-edit"></i>
     <% end %>
 
-    <%= link_to @experience, data: { turbo_method: :delete, confirm: '¿Estás seguro de que quieres eliminar esta experiencia?' }, class: 'btn btn-danger' do %>
+    <%= link_to experience_path(@experience), method: :delete, data: {
+      controller: "alert",
+      alert_icon_value: "warning",
+      alert_title_value: "¿Estás seguro?",
+      alert_html_value: "Eliminar esta experiencia.",
+      alert_confirm_button_text_value: "¡Sí, eliminar!",
+      alert_show_cancel_button_value: true,
+      alert_cancel_button_text_value: "Cancelar",
+      action: "click->alert#confirmDelete",
+      turbo: false
+    }, class: 'btn btn-danger' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   <% end %>

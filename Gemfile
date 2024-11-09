@@ -70,3 +70,5 @@ gem "devise"
 gem "cloudinary"
 gem "geocoder"
 gem "pg_search"
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'

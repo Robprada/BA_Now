@@ -57,6 +57,9 @@ export default class extends Controller {
       confirmButtonText: this.confirmButtonTextValue,
       showCancelButton: this.showCancelButtonValue,
       cancelButtonText: this.cancelButtonTextValue,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      backdrop: `rgba(173, 216, 230, 0.4)`,
       reverseButtons: true
     }).then((action) => {
       if (action.isConfirmed) {

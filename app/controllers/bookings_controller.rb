@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @experience = Experience.find(@booking.experience_id)
 
     if @booking.save
-      redirect_to root_path, notice: 'Booking created successfully!'
+      redirect_to root_path, notice: 'Reserva creada con éxito!'
     else
       render 'experiences/show', status: :unprocessable_entity
     end

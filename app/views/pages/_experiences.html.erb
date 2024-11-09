@@ -1,0 +1,28 @@
+<% @experiences.each do |experience| %>
+  <div class="tour-card">
+    <div class="image-container">
+      <% if experience.photos.attached? %>
+        <%= cl_image_tag experience.photos.first.key, height: 300, width: 400, crop: :fill, alt: experience.title %>
+      <% end %>
+      <button class="favorite-button"></button>
+    </div>
+    <div class="tour-content">
+      <div class="location-rating">
+        <span class="location"><%= experience.address %></span>
+        <div class="rating-container">
+          <span class="rating-star">★</span>
+          <span class="rating-number">4.92</span> <!-- Cambia esto según la lógica de tus calificaciones -->
+        </div>
+      </div>
+      <h3 class="tour-title"><%= experience.title %></h3>
+      <div class="tour-details">
+        <span><%= experience.description %></span>
+      </div>
+      <div class="price-container">
+        <span class="price"><%= number_to_currency(experience.price) %></span>
+        <span class="price-period">por persona</span>
+      </div>
+      <button class="btn-reserve" onclick="location.href='<%= experience_path(experience) %>'">Reservar</button>
+    </div>
+  </div>
+<% end %>

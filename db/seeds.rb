@@ -18,7 +18,7 @@ created_users = users.map do |user_data|
 end
 
 cloudinary_photo_ids = [
-  "uiNx0RtPV_720x0__1_aha0ds",
+  "FqAI1pZWYAEneRc_tbvwfh",
   "la-bombonera-cumple-80-KMBRBC324FAK5O4OH3TT7WPPII_ismc5b",
   "b5a7d3ad29b94ba4a364b686a5e8624d_yltsnz",
   "clases_ndw1i1",
@@ -56,12 +56,33 @@ cloudinary_photo_ids = [
   "yvkhcry8bzmdmpm70ib7",
   "qex7tm9p9nazj3poqdek",
   "s0jbajqtiwehsdn7reyl",
-  "chavf4tninnxnhsud45u"
+  "chavf4tninnxnhsud45u",
+  "yqknl9ixonvgcr8zgvb7",
+  "kn0xqi3jq8msxpjfsdeu",
+  "knngrj8ujuonpo1r8c0r",
+  "uplfwjflyxtkpnjtbczv",
+  "givkfemiy3g8htmsysmk",
+  "xhgtkhp3tdgg70m0ucre",
+  "osg56xfptdz5bljc0row",
+  "cehuggclc00oel6lhebc",
+  "hgubszprcnyezmj5qvlk",
+  "yf6qf48lqeayiqgt2jjn",
+  "iw48zwjmcyjxkjf82pha",
+  "qrow7m2p3k6z70qmupm5",
+  "eqxgjb1czalpqc8j150u",
+  "qedlsw2hwyu1brlkvdi7",
+  "r2kmihu5gcvui7enuipx",
+  "kig9lepanyw06vcmf0oe",
+  "vmseivt0ni77u3bfcxic",
+  "nfaezc6cvftytqjtozk6",
+  "esrazr0sgrrkp2ybioed",
+  "zaknyd5lrfhadepriqgb",
+  "ihc0gjizccygjwfzndrj"
 ]
 
 puts "Creando experiencias..."
 experiences = [
-  { title: "Tour por la ciudad", description: "Recorrido histórico por el centro", price: 2500, availability: 20, address: "Avenida Santa Fe 1305, Palermo" },
+  { title: "Partido Boca Juniors", description: "Alentá como jugaodr N.12", price: 220000, availability: 20, address: "Brandsen 805, La boca" },
   { title: "Clase de Cocina", description: "Aprende a cocinar platos típicos", price: 3500, availability: 15, address: "Avenida Callao 2578, Recoleta" },
   { title: "Taller de Fotografía", description: "Básicos de fotografía digital", price: 4000, availability: 10, address: "Av. Jorge Newbery 3489, Chacarita" },
   { title: "Teatro Tango Porteño", description: "Disfruta de un buen espectáculo tanguero", price: 55000, availability: 40, address: "Cerrito 570, San Nicolás" },
@@ -73,7 +94,14 @@ experiences = [
   { title: "Partido de polo", description: "Famoso Abierto de Palermo", price: 150000, availability: 25, address: "Av. del Libertador 4096, Palermo" },
   { title: "Casa del Diego", description: "La Casa de D10S, Historia y fútbol", price: 60000, availability: 10, address: "Lascano 2257, Villa del Parque" },
   { title: "Taller de Mate", description: "¿Cómo se prepara la famosa infusión?", price: 10000, availability: 10, address: "Ayacucho 1538, Recoleta" },
-  { title: "Autobús Turístico", description: "Autobús turístico Gray Line", price: 45000, availability: 30, address: "Av. Sta. Fe 3253, Palermo" }
+  { title: "Autobús Turístico", description: "Autobús turístico Gray Line", price: 45000, availability: 30, address: "Av. Sta. Fe 3253, Palermo" },
+  { title: "Show en Teatro Colon", description: "Operas, ballets y conciertos", price: 90000, availability: 30, address: "Tucumán 1171, San Nicolás" },
+  { title: "Jardín Japonés", description: "Vive la cultura japonesa", price: 30000, availability: 60, address: "Avenida Casares 3450, Palermo" },
+  { title: "Café Tortoni", description: "Mitico café de la ciudad", price: 40000, availability: 50, address: "Avenida De Mayo 825, Monserrat" },
+  { title: "Parrilla Don Julio", description: "Parrilla luxury", price: 240000, availability: 30, address: "Guatemala 4699, Palermo" },
+  { title: "Parrila el Ferroviario", description: "Variedad de carnes y pastas", price: 70000, availability: 20, address: "Avenida Reservistas Argentinos 219, Liniers" },
+  { title: "El Preferido", description: "Brunch en Palermo", price: 200000, availability: 20, address: "Jorge Luis Borges 2108, Palermo" },
+  { title: "Cementerio de Recoleta", description: "Experiecia unica en el cementerio", price: 20000, availability: 20, address: "Junín 1760, Recoleta" }
 ]
 
 created_experiences = experiences.each_with_index.map do |exp_data, index|

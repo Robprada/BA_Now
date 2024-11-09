@@ -1,4 +1,5 @@
-# Experience Hub
+# Nombre del Proyecto: Buenas Experiencias
+- Url de webapp en Heroku: [https://ba-now-robprada-5b27cdfed0bb.herokuapp.com/](https://ba-now-robprada-5b27cdfed0bb.herokuapp.com/)
 
 ## Plataforma de Experiencias Turísticas
 
@@ -58,3 +59,4 @@ erDiagram
 - Sistema de reseñas y valoraciones
 - Busqueda de experiencias con AJAX
 - Alertas personalizadas con SweetAlert2
+- Paginación de las experiencias usando Bootstrap4 y Kaminari

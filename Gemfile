@@ -70,5 +70,9 @@ gem "devise"
 gem "cloudinary"
 gem "geocoder"
 gem "pg_search"
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'

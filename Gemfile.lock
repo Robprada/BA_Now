@@ -420,13 +420,10 @@ DEPENDENCIES
   geocoder
   importmap-rails (~> 1.2.3)
   jbuilder
-<<<<<<< HEAD
+  kaminari
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
-=======
-  kaminari
->>>>>>> master
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)

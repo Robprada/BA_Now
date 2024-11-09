@@ -41,17 +41,20 @@ erDiagram
     integer rating
     text comments
   }
+```
+### 2. Características Principales
 
+#### Autenticación y Autorización
+- Sistema de usuarios completo usando Devise
+- Inicio de sesión con Google
+- Roles diferenciados (creadores de experiencias y usuarios)
+- Gestión de perfiles personalizados
 
-2. Características Principales
-Autenticación y Autorización
-Sistema de usuarios completo usando Devise
-Roles diferenciados (creadores de experiencias y usuarios)
-Gestión de perfiles personalizados
-Gestión de Experiencias
-CRUD completo para experiencias turísticas
-Sistema de reservas
-Geolocalización con Geocoder
-Almacenamiento de imágenes con Cloudinary
-Sistema de reseñas y valoraciones
-<!-- Continúa con las demás secciones siguiendo el mismo patrón -->
+#### Gestión de Experiencias
+- CRUD completo para experiencias turísticas
+- Sistema de reservas
+- Geolocalización con Geocoder
+- Almacenamiento de imágenes con Cloudinary
+- Sistema de reseñas y valoraciones
+- Busqueda de experiencias con AJAX
+- Alertas personalizadas con SweetAlert2

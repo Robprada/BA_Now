@@ -13,4 +13,11 @@
     <div class="tours-grid">
         <%= render partial: "experiences", locals: { experiences: @experiences } %>
     </div>
+    <div class="d-flex justify-content-center mt-4">
+        <%= paginate @experiences, theme: 'twitter-bootstrap-4',
+            pagination_class: "pagination-sm",
+            nav_class: "d-i nline-block",
+            page_class: "page-item",
+            page_link_class: "page-link" %>
+    </div>
 </section>

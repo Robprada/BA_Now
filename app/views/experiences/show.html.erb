@@ -113,7 +113,19 @@
       <div class="booking-card card position-sticky">
         <div class="card-body">
         <h2 class="card-title">Reserva tu experiencia</h2>
-        <%= simple_form_for [@experience, @booking] do |f| %>
+        <%= simple_form_for [@experience, @booking], html: {
+            data: {
+              controller: "alert",
+              alert_icon_value: "question",
+              alert_title_value: "¿Estás seguro?",
+              alert_html_value: "Reservar tu experiencia.",
+              alert_confirm_button_text_value: "¡Sí, reservar!",
+              alert_show_cancel_button_value: true,
+              alert_cancel_button_text_value: "Cancelar",
+              action: "submit->alert#initSweetalert",
+              turbo: false
+            }
+          } do |f| %>
           <%= f.input :experience_id, as: :hidden, input_html: { value: @experience.id } %>
           <div class="form-inputs">
             <%= f.input :booking_date, as: :date, html5: true %>

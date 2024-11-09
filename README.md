@@ -1,75 +1,60 @@
-<div class="documentation-container container mt-5">
-  <h1 class="text-center mb-4">Experience Hub</h1>
-  <h2 class="text-center mb-5">Plataforma de Experiencias Turísticas</h2>
-  <div class="row">
-    <div class="col-12">
-      <h3 class="mb-4">1. Arquitectura del Proyecto</h3>
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>Diagrama de Base de Datos</h4>
-        </div>
-        <div class="card-body">
-          <div class="mermaid">
-            erDiagram
-              Users ||--o{ Experiences : "creates (has_many)"
-              Users ||--o{ Bookings : "has_many"
-              Users ||--o{ Reviews : "has_many"
-              Experiences ||--o{ Bookings : "has_many"
-              Experiences ||--o{ Reviews : "has_many"
-              Experiences ||--o{ Photos : "has_many_attached"
-              Users {
-                string email PK
-                string encrypted_password
-                string username
-                string municipality
-              }
-              Experiences {
-                bigint id PK
-                string title
-                text description
-                integer price
-                integer availability
-                string address
-                float latitude
-                float longitude
-              }
-              Bookings {
-                bigint id PK
-                datetime booking_date
-                time hour
-                integer tickets
-              }
-              Reviews {
-                bigint id PK
-                integer rating
-                text comments
-              }
-          </div>
-        </div>
-      </div>
-      <h3 class="mb-4">2. Características Principales</h3>
-      <div class="card mb-4">
-        <div class="card-body">
-          <h4>Autenticación y Autorización</h4>
-          <ul>
-            <li>Sistema de usuarios completo usando Devise</li>
-            <li>Roles diferenciados (creadores de experiencias y usuarios)</li>
-            <li>Gestión de perfiles personalizados</li>
-          </ul>
-          <h4>Gestión de Experiencias</h4>
-          <ul>
-            <li>CRUD completo para experiencias turísticas</li>
-            <li>Sistema de reservas</li>
-            <li>Geolocalización con Geocoder</li>
-            <li>Almacenamiento de imágenes con Cloudinary</li>
-            <li>Sistema de reseñas y valoraciones</li>
-          </ul>
-        </div>
-      </div>
-      <!-- Continúa con las demás secciones siguiendo el mismo patrón -->
-    </div>
-  </div>
-</div>
+# Experience Hub
+
+## Plataforma de Experiencias Turísticas
+
+### 1. Arquitectura del Proyecto
+
+#### Diagrama de Base de Datos
+
+```mermaid
+erDiagram
+  Users ||--o{ Experiences : "creates (has_many)"
+  Users ||--o{ Bookings : "has_many"
+  Users ||--o{ Reviews : "has_many"
+  Experiences ||--o{ Bookings : "has_many"
+  Experiences ||--o{ Reviews : "has_many"
+  Experiences ||--o{ Photos : "has_many_attached"
+  Users {
+    string email PK
+    string encrypted_password
+    string username
+    string municipality
+  }
+  Experiences {
+    bigint id PK
+    string title
+    text description
+    integer price
+    integer availability
+    string address
+    float latitude
+    float longitude
+  }
+  Bookings {
+    bigint id PK
+    datetime booking_date
+    time hour
+    integer tickets
+  }
+  Reviews {
+    bigint id PK
+    integer rating
+    text comments
+  }
+
+
+### 2. Características Principales
+#### Autenticación y Autorización
+- Sistema de usuarios completo usando Devise
+- Roles diferenciados (creadores de experiencias y usuarios)
+- Gestión de perfiles personalizados
+#### Gestión de Experiencias
+- CRUD completo para experiencias turísticas
+- Sistema de reservas
+- Geolocalización con Geocoder
+- Almacenamiento de imágenes con Cloudinary
+- Sistema de reseñas y valoraciones
+
 
 # app/assets/stylesheets/documentation.scss
 .documentation-container {

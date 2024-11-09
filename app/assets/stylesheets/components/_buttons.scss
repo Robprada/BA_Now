@@ -1,4 +1,4 @@
-.btn, .btn-google {
+.btn-google {
   background-color: #4285f4;
   color: white;
   padding: 10px 20px;
@@ -7,10 +7,15 @@
   align-items: center;
   gap: 10px;
   margin: 1rem 0;
+  border: none;
+  width: auto;
+  cursor: pointer;
+  text-decoration: none;
   
   &:hover {
     background-color: #357abd;
     color: white;
+    text-decoration: none;
   }
 
   i {
@@ -19,7 +24,7 @@
 }
 
 .social-login {
-  text-align: center;
+  // text-align: center;
   margin: 1rem 0;
   padding-top: 1rem;
   border-top: 1px solid #dee2e6;
